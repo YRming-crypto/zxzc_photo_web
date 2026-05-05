@@ -1,0 +1,746 @@
+/* --- 基础设置 --- */
+:root {
+    --primary-color: #0056A3; 
+    --gold-color: #D4AF37;    
+    --text-dark: #333333;
+    --text-light: #666666;
+    --bg-light: #f8f9fa;
+    --white: #ffffff;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent; 
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, "PingFang SC", "Helvetica Neue", STHeiti, "Microsoft Yahei", Tahoma, Simsun, sans-serif;
+    background-color: var(--bg-light);
+    color: var(--text-dark);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    padding: 0 20px;
+}
+
+/* --- 动画：滚动揭示效果 --- */
+.reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* --- 顶部固定导航 --- */
+.mobile-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background-color: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(10px); 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 15px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    z-index: 1000;
+}
+
+.header-logo {
+    display: flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 35px;
+    margin-right: 8px;
+    border-radius: 50%; 
+}
+
+.logo-text {
+    font-weight: bold;
+    color: var(--primary-color);
+    font-size: 1.1rem;
+}
+
+.header-tag {
+    background-color: var(--gold-color);
+    color: var(--white);
+    font-size: 0.75rem;
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* --- 主视觉区 (Hero) --- */
+.hero {
+    height: 100vh; 
+    background-size: cover;
+    background-position: center;
+    position: relative; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,86,163,0.3), rgba(0,0,0,0.8)); 
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2;
+    color: var(--white);
+    padding: 0 20px;
+    transform: translateY(-20px); 
+}
+
+/* --- 【新增】徽章排版与滑动动画 --- */
+.hero-logos {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 25px; 
+    /* 移除之前的 gap，用分离器的 margin 替代，方便控制动画起点 */
+}
+
+.logo-separator {
+    font-size: 2.2rem;
+    color: var(--white);
+    font-weight: 300;
+    margin: 0 25px; /* 这里控制两个图标拉开的距离 (总间距会大于50px) */
+    opacity: 0;
+    transform: scale(0.5);
+    /* 斜杠从中心弹出的动画 */
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) 0.2s forwards;
+}
+
+.logo-slide {
+    display: flex;
+}
+
+/* 左侧校徽：起始位置向右偏移(藏在中心)，然后向左滑归位 */
+.left-slide {
+    opacity: 0;
+    transform: translateX(60px); 
+    animation: slideOutLeft 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+}
+
+/* 右侧系徽：起始位置向左偏移(藏在中心)，然后向右滑归位 */
+.right-slide {
+    opacity: 0;
+    transform: translateX(-60px); 
+    animation: slideOutRight 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.4s forwards;
+}
+
+.hero-logo-img {
+    width: 70px; 
+    height: 70px;
+    border-radius: 50%; 
+    background-color: var(--white); 
+    object-fit: contain; 
+    border: 2px solid rgba(255, 255, 255, 0.9); 
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3); 
+}
+
+/* 徽章动画关键帧 */
+@keyframes popIn {
+    100% { opacity: 0.8; transform: scale(1); } /* 斜杠保持轻微透明度显得不生硬 */
+}
+
+@keyframes slideOutLeft {
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slideOutRight {
+    100% { opacity: 1; transform: translateX(0); }
+}
+
+/* --- 剩余样式保持不变 --- */
+.hero-title {
+    font-size: 2.8rem;
+    font-weight: 800;
+    line-height: 1.3;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-size: 1.05rem; 
+    line-height: 1.6;  
+    color: var(--gold-color);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 35px; 
+    left: 50%;
+    color: rgba(255,255,255,0.8);
+    font-size: 0.85rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    animation: bounce 2s infinite;
+    z-index: 10; 
+}
+
+.scroll-indicator i {
+    margin-top: 8px;
+    font-size: 1.2rem;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% { transform: translate(-50%, 0); }
+    40% { transform: translate(-50%, -10px); }
+    60% { transform: translate(-50%, -5px); }
+}
+
+/* --- 毕业寄语 --- */
+.blessing-section {
+    padding: 60px 0;
+    background-color: var(--white);
+    position: relative;
+}
+
+.quote-icon {
+    font-size: 2.5rem;
+    color: rgba(212, 175, 55, 0.2); 
+    margin-bottom: 15px;
+}
+
+.blessing-text {
+    font-size: 1.1rem;
+    color: var(--text-dark);
+    text-indent: 2em;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+.blessing-author {
+    margin-top: 20px;
+    text-align: right;
+    font-weight: bold;
+    color: var(--primary-color);
+}
+
+/* --- 标题通用样式 --- */
+.section-title {
+    font-size: 1.6rem;
+    color: var(--primary-color);
+    font-weight: bold;
+    margin-bottom: 5px;
+    display: flex;
+    flex-direction: column;
+}
+
+.title-en {
+    font-size: 0.8rem;
+    color: var(--gold-color);
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+/* --- 校园风光 --- */
+.scenery-section {
+    padding: 50px 0;
+    background-color: var(--bg-light);
+    overflow: hidden; 
+}
+
+.scenery-gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 20px 20px 40px; /* 确保左右都有 20px 的内边距 */
+    gap: 15px;
+}
+
+.scenery-gallery::-webkit-scrollbar {
+    display: none; 
+}
+
+.scenery-card {
+    flex: 0 0 85%; 
+    scroll-snap-align: center; 
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--white);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    aspect-ratio: 4 / 3; /* 【新增】强制卡片为 4:3 比例 */
+}
+
+.scenery-card img {
+    width: 100%;
+    height: 100%; /* 【修改】将原来的 220px 固定高度改为 100% */
+    object-fit: cover;
+    display: block;
+}
+
+.scenery-info {
+    padding: 15px;
+    text-align: center;
+    font-weight: 500;
+    color: var(--text-dark);
+}
+
+.swipe-hint {
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--text-light);
+    margin-top: -15px;
+}
+
+/* --- 专业设置 --- */
+.majors-section {
+    padding: 50px 0;
+    background-color: var(--white);
+}
+
+.section-desc {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    margin-bottom: 30px;
+}
+
+.majors-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.major-item {
+    display: flex;
+    align-items: flex-start;
+    padding: 20px;
+    background-color: var(--bg-light);
+    border-radius: 12px;
+    border-left: 4px solid var(--primary-color);
+}
+
+.major-icon {
+    font-size: 1.8rem;
+    color: var(--gold-color);
+    margin-right: 15px;
+    margin-top: 3px;
+}
+
+.major-details h3 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 5px;
+}
+
+.major-details p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+}
+
+/* --- 底部 --- */
+.mobile-footer {
+    background-color: var(--primary-color);
+    color: var(--white);
+    padding: 60px 0 40px;
+    text-align: center;
+}
+
+.footer-logo {
+    height: 50px;
+    margin-bottom: 15px;
+    border-radius: 50%; 
+    background: white; 
+}
+
+.mobile-footer h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+
+.mobile-footer h4 {
+    font-size: 1rem;
+    font-weight: normal;
+    opacity: 0.9;
+}
+
+.graduation-year {
+    color: var(--gold-color);
+    font-family: Georgia, serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    margin: 15px 0;
+}
+
+.footer-line {
+    width: 225px;
+    height: 2px;
+    background-color: var(--gold-color);
+    margin: 0 auto 15px;
+}
+
+.copyright {
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+/* --- 新增：观看更多风景卡片样式 --- */
+.view-more-card {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
+    text-decoration: none; /* 移除超链接默认下划线 */
+    cursor: pointer;
+}
+
+.view-more-content {
+    text-align: center;
+}
+
+.view-more-content i {
+    font-size: 2.5rem;
+    color: var(--gold-color); /* 金色箭头点缀 */
+    margin-bottom: 12px;
+}
+
+.view-more-content p {
+    font-size: 1.1rem;
+    font-weight: bold;
+    color: var(--white);
+    margin: 0;
+}
+
+.view-more-card:active {
+    opacity: 0.9; /* 手机端点击时的反馈效果 */
+}
+/* --- 拖拽跳转指示器特效 --- */
+.scenery-section {
+    position: relative; /* 确保指示器能基于该板块绝对定位 */
+}
+
+.drag-to-gallery-indicator {
+    position: absolute;
+    top: 60%; /* 垂直居中稍微偏下，对齐图片中心 */
+    right: 0; /* 贴在屏幕最右侧边缘 */
+    transform: translate(100%, -50%); /* 初始状态：100% 藏在屏幕右侧外部看不见 */
+    background: var(--white);
+    color: var(--primary-color);
+    padding: 12px 20px;
+    border-radius: 30px 0 0 30px; /* 左边圆角，右边直角 */
+    box-shadow: -4px 4px 15px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    z-index: 100;
+    opacity: 0;
+    transition: color 0.3s, background 0.3s; /* 变色的过渡动画 */
+    pointer-events: none; /* 防止挡住用户的正常点击 */
+}
+
+/* 箭头到达屏幕中间（满足跳转条件）时的变色状态 */
+.drag-to-gallery-indicator.ready {
+    background: var(--primary-color);
+    color: var(--gold-color);
+}
+/* --- 静态：左右滑动提示 (Swipe Hint) --- */
+.swipe-hint {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px; /* 图标和文字的间距 */
+    font-size: 0.85rem;
+    color: var(--text-light);
+    margin-top: 15px; /* 距离上方照片的距离 */
+    opacity: 0.8;
+}
+
+.swipe-hint i {
+    color: var(--primary-color);
+    font-size: 1rem;
+    /* 给双向箭头加一个微弱的左右浮动动画，引导用户滑动 */
+    animation: swipeHintAnim 2s ease-in-out infinite;
+}
+
+@keyframes swipeHintAnim {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-5px); }
+}
+/* --- 相册末端标识样式 --- */
+/* --- 相册末端标识样式 (已修复尺寸) --- */
+.gallery-end-hint {
+    flex: 0 0 80px; /* 【修改】将宽度稍微调大到 80px，看起来更像一个面板 */
+    align-self: stretch;
+    scroll-snap-align: end; /* 【核心修复】告诉浏览器，滚动可以一直进行到这个元素的末尾 */
+    background: linear-gradient(to right, rgba(0,86,163,0.1), rgba(0,86,163,0.3));
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    margin-left: 10px;
+    margin-right: 20px; /* 【新增】右边距确保卡片不紧贴屏幕边缘 */
+}
+
+.end-hint-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: var(--primary-color);
+    opacity: 0.6;
+}
+
+.end-hint-content i {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+    /* 循环左右指引的动画 */
+    animation: pointLeft 1.5s infinite;
+}
+
+.end-hint-content p {
+    writing-mode: vertical-rl; /* 文字竖向排列 */
+    letter-spacing: 4px;
+    font-size: 0.9rem;
+    font-weight: bold;
+    text-transform: uppercase;
+}
+
+@keyframes pointLeft {
+    0%, 100% { transform: translateX(0); }
+    50% { transform: translateX(-8px); }
+}
+/* --- 常驻相册入口样式 --- */
+
+/* 1. 标题头部的弹性布局 */
+.section-header-flex {
+    display: flex;
+    justify-content: space-between; /* 左右分布 */
+    align-items: flex-end; /* 底部对齐 */
+    margin-bottom: 20px;
+}
+
+/* 2. 按钮的具体样式 */
+.static-gallery-btn {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 14px;
+    border: 1.5px solid var(--primary-color); /* 深蓝细边框 */
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    transition: all 0.3s ease;
+    background: rgba(255, 255, 255, 0.8);
+}
+
+/* 点击反馈 */
+.static-gallery-btn:active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: scale(0.95);
+}
+
+.static-gallery-btn i {
+    font-size: 0.9rem;
+}
+
+/* 适配：防止标题太长挤压按钮 */
+@media (max-width: 350px) {
+    .section-header-flex {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+    }
+}
+/* --- 活动风采 (Activities) --- */
+.activities-section {
+    padding: 50px 0;
+    background-color: var(--white);
+}
+
+.activity-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* 手机端单列排布，突出故事感 */
+    gap: 25px;
+    margin-top: 20px;
+}
+
+.activity-card {
+    background: var(--bg-light);
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+    
+    /* 【新增以下三行】：消除 a 标签的默认超链接样式 */
+    display: block; 
+    text-decoration: none; 
+    color: inherit; 
+}
+
+.activity-card:active {
+    transform: scale(0.98); /* 手机端点击反馈 */
+}
+
+.activity-img-box {
+    position: relative;
+    height: 180px;
+    overflow: hidden;
+}
+
+.activity-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* 活动标签：左上角斜角设计 */
+.activity-tag {
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    background: var(--gold-color);
+    color: var(--white);
+    font-size: 0.75rem;
+    font-weight: bold;
+    padding: 4px 12px;
+    border-radius: 20px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+
+.activity-info {
+    padding: 15px;
+}
+
+.activity-info h3 {
+    font-size: 1.1rem;
+    color: var(--primary-color);
+    margin-bottom: 8px;
+}
+
+.activity-info p {
+    font-size: 0.9rem;
+    color: var(--text-light);
+    line-height: 1.5;
+}
+
+/* 如果是宽屏手机或平板，自动切换为两列 */
+@media (min-width: 480px) {
+    .activity-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+/* --- 新增：查看更多活动按钮样式 --- */
+.activity-more-btn-wrapper {
+    display: flex;
+    justify-content: center;
+    margin-top: 35px; /* 与上方卡片拉开距离 */
+}
+
+.view-more-activities-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 28px;
+    border: 1.5px solid var(--primary-color); /* 采用线框风格，显得更清爽 */
+    color: var(--primary-color);
+    text-decoration: none;
+    border-radius: 25px;
+    font-weight: bold;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    background: transparent;
+}
+
+/* 手机端点击反馈：点击时填充底色 */
+.view-more-activities-btn:active {
+    background-color: var(--primary-color);
+    color: var(--white);
+    transform: scale(0.95);
+}
+/* --- 荣誉墙 (Honor Wall) --- */
+.honors-section {
+    padding: 50px 0;
+    background-color: var(--bg-light); /* 使用浅灰底色，与上下白底板块区分层次 */
+    overflow: hidden;
+}
+
+.honors-gallery {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding: 20px 20px 30px;
+    gap: 15px;
+}
+
+.honors-gallery::-webkit-scrollbar {
+    display: none;
+}
+
+.honor-card {
+    flex: 0 0 65%; /* 占据屏幕宽度的65%，这样能露出下一张卡片的一半，引导用户滑动 */
+    scroll-snap-align: center;
+    background: var(--white);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.06);
+    text-decoration: none; /* 去除超链接下划线 */
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: transform 0.2s ease;
+}
+
+.honor-card:active {
+    transform: scale(0.96); /* 手机端点击时的按压回弹效果 */
+}
+
+.honor-img-box {
+    width: 100%;
+    aspect-ratio: 4 / 3; /* 图片固定为 4:3 比例，确保证书或合影排列整齐 */
+    background-color: #eaeaea;
+    border-bottom: 3px solid var(--gold-color); /* 金色分割线，提升荣誉感 */
+}
+
+.honor-img-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.honor-title {
+    padding: 15px 12px;
+    text-align: center;
+    font-size: 0.95rem;
+    font-weight: bold;
+    color: var(--primary-color);
+    line-height: 1.4;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-grow: 1; /* 无论比赛名称是长是短，都能自动填充高度保持对齐 */
+}
