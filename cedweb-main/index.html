@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>2026届毕业纪念 - 计算机工程系</title>
+    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- 引入 Favicon -->
+    <link rel="icon href="./img/logo/计算机工程系LOGO.jpg" type="image/jpeg">
+</head>
+<body>
+
+    <!-- 顶部固定导航条 -->
+    <header class="mobile-header">
+        <div class="header-logo">
+            <img src="./img/logo/计算机工程系LOGO.jpg" alt="系徽" class="logo-img">
+            <span class="logo-text">计算机工程系</span>
+        </div>
+        <div class="header-tag">2026毕业留念</div>
+    </header>
+
+    <!-- 1. 主视觉区 (Hero Section) -->
+    <section class="hero" style="background-image: url('./img/校园风景/天空很好看的图+石头.jpg');">
+        <div class="hero-overlay"></div>
+        
+        <!-- 文字内容区 -->
+        <div class="hero-content reveal">
+            <!-- 【核心修改】带有动画效果的校徽和系徽双圆标展示区 -->
+            <div class="hero-logos">
+                <!-- 左侧：校徽向左滑出 -->
+                <div class="logo-slide left-slide">
+                    <img src="./img/logo/校徽.jpg" alt="天津理工大学中环信息学院校徽" class="hero-logo-img">
+                </div>
+                
+                <!-- 中间：斜杠分隔符 -->
+                <div class="logo-separator">/</div>
+                
+                <!-- 右侧：系徽向右滑出 -->
+                <div class="logo-slide right-slide">
+                    <img src="./img/logo/计算机工程系LOGO.jpg" alt="计算机工程系系徽" class="hero-logo-img">
+                </div>
+            </div>
+
+            <h1 class="hero-title">青春不散场<br>梦想正启航</h1>
+            <p class="hero-subtitle">天津理工大学中环信息学院<br>计算机工程系</p>
+        </div>
+
+        <!-- 滑动指示器 -->
+        <div class="scroll-indicator">
+            <span>向下滑动开启回忆</span>
+            <i class="fas fa-chevron-down"></i>
+        </div>
+    </section>
+
+    <!-- 2. 毕业寄语 (Message Section) -->
+    <section class="blessing-section">
+        <div class="container reveal">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <p class="blessing-text">
+                四年的代码与星光，汇聚成你们此刻的锋芒。从第一行 "Hello World" 到如今的独当一面，中环的校园见证了你们的蜕变。愿你们带着计算机工程系的严谨与创新，在未来的代码世界里，编译出属于自己的辉煌人生！
+            </p>
+            <p class="blessing-author">—— 致 2026 届全体毕业生</p>
+        </div>
+    </section>
+
+    <!-- 3. 校园风光 (Campus Scenery) -->
+    <section class="scenery-section">
+        <div class="container reveal">
+            <div class="section-header-flex">
+                <h2 class="section-title">校园风光 <span class="title-en">CAMPUS MEMORIES</span></h2>
+                
+                <a href="gallery.html" class="static-gallery-btn">
+                    <i class="fas fa-th"></i> 全部相册
+                </a>
+            </div>
+        </div>
+        
+        <div class="scenery-gallery reveal">
+            <div class="scenery-card">
+                <img src="./img/校园风景/教学楼和宿舍1外部/春天的一教加牌子（）有代表性.jpg" alt="">
+                <div class="scenery-info">png1</div>
+            </div>
+            <div class="scenery-card">
+                <img src="./img/校园风景/海棠花/校园的海棠花.jpg" alt="">
+                <div class="scenery-info">png2</div>
+            </div>
+            <div class="scenery-card">
+                <img src="./img/校园风景/下雪天的校园全景.jpg" alt="">
+                <div class="scenery-info">png3</div>
+            </div>
+            <div class="scenery-card">
+                <img src="./img/校园风景/天空很好看的图+石头.jpg" alt="">
+                <div class="scenery-info">png4</div>
+            </div>
+
+            <div class="gallery-end-hint">
+                <div class="end-hint-content">
+                    <i class="fas fa-chevron-left"></i>
+                    <p>左滑进入相册</p>
+                </div>
+            </div>
+        </div> 
+
+        <div class="swipe-hint reveal">
+            <i class="fas fa-arrows-alt-h"></i>
+            <span>左右滑动查看更多</span>
+        </div>
+
+        <div class="drag-to-gallery-indicator" id="drag-indicator">
+            <i class="fas fa-arrow-left"></i>
+            <span class="drag-text">继续拖动查看全部</span>
+        </div>
+    </section>
+   <section class="activities-section">
+        <div class="container reveal">
+            <h2 class="section-title">活动风采 <span class="title-en">CAMPUS ACTIVITIES</span></h2>
+            <p class="section-desc">代码之外，我们的校园生活同样热辣滚烫</p>
+            
+            <div class="activity-grid">
+                <a href="https://mp.weixin.qq.com/s/PmrzT2SGcmOMaeND26dNsg" class="activity-card">
+                    <div class="activity-img-box">
+                        <img src="./img/元旦晚会.jpg" alt="活动1">
+                    </div>
+                    <div class="activity-info">
+                        <h3>计算机工程系元旦晚会</h3>
+                        <p>时光荏苒， 欢乐的时光虽已落幕 但青春的激情永不落幕 岁月如歌， 过去的感动终将沉淀为前行的力量 2026年，让我们怀揣梦想 去奔赴更广阔的征程 让我们带着今年的欢笑与感动 以青春之我、奋斗之姿 在新的一年里逐光而行、不负韶华 共同书写更加璀璨的崭新篇章！</p>
+                    </div>
+                </a>
+
+                <a href="https://mp.weixin.qq.com/s/ye4kVNXkfqjPJBwpBiWtQQ" class="activity-card">
+                    <div class="activity-img-box">
+                        <img src="./img/中青聚力杯.jpg" alt="活动2">
+                    </div>
+                    <div class="activity-info">
+                        <h3>中青聚力杯</h3>
+                        <p>赛事既为同学们搭建了切磋交流、释放活力的平台，更以竞技为纽带凝聚专业向心力，让“团结就是力量”的信念深入人心。赛场展现的拼搏姿态与协作精神，将转化为校园正能量，为计算机工程系校园文化注入鲜活动力。</p>
+                    </div>
+                </a>
+
+                <a href="https://mp.weixin.qq.com/s/LpI05qltKm9oyYodi1BbXw" class="activity-card">
+                    <div class="activity-img-box">
+                        <img src="./img/志愿服务.jpg" alt="活动3">
+                    </div>
+                    <div class="activity-info">
+                        <h3>弘扬雷锋精神，青春志愿同行</h3>
+                        <p>此次活动，让志愿者们在实践中深化了对雷锋精神的理解，锤炼了服务他人、奉献社会的实践能力。让雷锋精神扎根基层，丰富了社区居民的健康生活，推动了校园志愿服务精神与社区建设的深度融合，彰显了青年学子的责任与担当。</p>
+                    </div>
+                </a>
+
+                <a href="https://mp.weixin.qq.com/s/li4sTLWAmseJswMbGurQmg" class="activity-card">
+                    <div class="activity-img-box">
+                        <img src="./img/挑战杯.jpg" alt="活动4">
+                    </div>
+                    <div class="activity-info">
+                        <h3>“挑战杯”大学生创业计划竞赛系级决赛</h3>
+                        <p>此次竞赛以赛促学、以赛促创、以赛促练，既激发了学子的科创热情，更营造了崇尚科学、勇于探索的优良学风。未来，计算机工程系将持续深耕科创育人工作，助力青年学子在创新征程上勇毅前行，培育更多堪当大任的高素质科创人才。</p>
+                    </div>
+                </a>
+            </div>
+
+            <div class="activity-more-btn-wrapper reveal">
+                <a href="https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=Mzg4MTQwNzA5NQ==&scene=124#wechat_redirect" class="view-more-activities-btn">
+                    <span>查看更多活动</span> <i class="fas fa-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section class="honors-section">
+        <div class="container reveal">
+            <h2 class="section-title">荣誉墙 <span class="title-en">WALL OF HONOR</span></h2>
+            <p class="section-desc">那些披星戴月的日子，终会化作璀璨星光</p>
+        </div>
+
+        <div class="honors-gallery reveal">
+            <a href="https://mp.weixin.qq.com/s/IrAH0aHIR703pjNvOthTsw" class="honor-card">
+                <div class="honor-img-box">
+                    <img src="./img/奖项/开放原子.jpg" alt="荣誉1">
+                </div>
+                <div class="honor-title">第三届开放原子大赛全国赛</div>
+            </a>
+            
+            <a href="https://mp.weixin.qq.com/s/iR5-sFN1n9f9XBkEFulgZw" class="honor-card">
+                <div class="honor-img-box">
+                    <img src="./img/奖项/数据要素.jpg" alt="荣誉2">
+                </div>
+                <div class="honor-title">第二届大学生数据要素素质大赛</div>
+            </a>
+            
+            <a href="https://mp.weixin.qq.com/s/-Icq3RrUtCmXIQl6uabHtQ" class="honor-card">
+                <div class="honor-img-box">
+                    <img src="./img/奖项/先进成图.png" alt="荣誉3">
+                </div>
+                <div class="honor-title">第十八届“高教杯”全国大学生先进成图技术与产品信息建模创新大赛</div>
+            </a>
+            
+            <a href="https://mp.weixin.qq.com/s/PEtWPzlVTxf6Cq6HRL7qLw" class="honor-card">
+                <div class="honor-img-box">
+                    <img src="./img/奖项/IT杯.png" alt="荣誉4">
+                </div>
+                <div class="honor-title">TI杯全国大学生电子设计竞赛</div>
+            </a>
+            
+            <a href="https://mp.weixin.qq.com/s/_xFjmp-YUspaai1zP0fMpQ" class="honor-card">
+                <div class="honor-img-box">
+                    <img src="./img/奖项/CRAIC.jpg" alt="荣誉5">
+                </div>
+                <div class="honor-title">2025年CRAIC（中国机器人及人工智能大赛）</div>
+            </a>
+        </div>
+        
+        <div class="swipe-hint reveal">
+            <i class="fas fa-arrows-alt-h"></i>
+            <span>左右滑动查看更多荣誉</span>
+        </div>
+    </section>
+    <section class="majors-section">
+        <div class="container reveal">
+            <h2 class="section-title">专业印记 <span class="title-en">OUR MAJORS</span></h2>
+            <p class="section-desc">还记得你最初选择的那个方向吗？</p>
+            
+            <div class="majors-list">
+                <div class="major-item">
+                    <div class="major-icon"><i class="fas fa-desktop"></i></div>
+                    <div class="major-details">
+                        <h3>计算机科学与技术</h3>
+                        <p>探索计算之美，筑牢底层逻辑，你是构筑数字世界的基石。</p>
+                    </div>
+                </div>
+                
+                <div class="major-item">
+                    <div class="major-icon"><i class="fas fa-code"></i></div>
+                    <div class="major-details">
+                        <h3>软件工程</h3>
+                        <p>以工程化思维铸就软件之魂，你将成为系统架构的执笔人。</p>
+                    </div>
+                </div>
+                <div class="major-item">
+                    <div class="major-icon"><i class="fas fa-photo-video"></i></div>
+                    <div class="major-details">
+                        <h3>数字媒体技术</h3>
+                        <p>左手代码，右手艺术，你们在虚拟与现实的交界处创造奇迹。</p>
+                    </div>
+                </div>
+                <div class="major-item">
+                    <div class="major-icon"><i class="fas fa-database"></i></div>
+                    <div class="major-details">
+                        <h3>数据科学与大数据技术</h3>
+                        <p>在海量数据中挖掘宝藏，你们是洞悉未来的数字预言家。</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. 底部留念 (Footer) -->
+    <footer class="mobile-footer">
+        <div class="container reveal">
+            <img src="./img/logo/计算机工程系LOGO.jpg" alt="系徽" class="footer-logo">
+            <h3>天津理工大学中环信息学院</h3>
+            <h4>计算机工程系</h4>
+            <div class="footer-line"></div>
+            <p class="copyright">愿此去繁花似锦，再相逢依然如故。</p>
+            <p class="copyright-small">© 2026 All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="./script.js"></script>
+</body>
+</html>
